@@ -1,7 +1,7 @@
 const box = document.getElementById('box');
 const copyButton = document.getElementById('copy-button');
 
-const inputs = [
+const controllers = [
   {
     name: 'border-radius-top-left',
     attr: 'borderTopLeftRadius',
@@ -20,17 +20,17 @@ const inputs = [
   },
 ];
 
-inputs.map((input) => {
-  const element = document.getElementsByName(input.name)[0];
-  const button = element.parentElement.children[1];
+controllers.map(({ name, attr }) => {
+  const input = document.getElementsByName(name)[0];
+  const button = input.parentElement.children[1];
 
-  element.addEventListener('input', ({ target }) => {
-    changeBoxBorderRadius(input.attr, `${target.value}px`);
+  input.addEventListener('input', ({ target }) => {
+    changeBoxBorderRadius(attr, `${target.value}px`);
   });
 
   button.addEventListener('click', ({ target }) => {
-    changeBoxBorderRadius(input.attr, changeUnit(box.style[input.attr]));
-    target.innerText = getUnit(box.style[input.attr]);
+    changeBoxBorderRadius(attr, changeUnit(box.style[attr]));
+    target.innerText = getUnit(box.style[attr]);
   });
 });
 

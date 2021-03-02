@@ -75,18 +75,18 @@ main.container > section {
   border-radius: 8rem;
 }
 
-.input-container {
+.controller {
   display: flex;
 
   border: 0.2rem solid var(--color-input-border);
   margin-bottom: 1rem;
 }
 
-.input-container:last-child {
+.controller:last-child {
   margin-bottom: 0;
 }
 
-.input-container > input {
+.controller > input {
   border: 0;
   border-radius: 8px 0 0 8px;
   padding: 2rem;
@@ -100,7 +100,7 @@ main.container > section {
   background-color: var(--color-input);
 }
 
-.input-container > input:focus {
+.controller > input:focus {
   outline: 0;
 }
 
