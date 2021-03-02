@@ -39,7 +39,7 @@ function changeBoxBorderRadius(border, value) {
 }
 
 function getUnit(string) {
-  return string.match(/px|%/);
+  return string ? string.match(/px|%/) : 'px';
 }
 
 function changeUnit(string) {
