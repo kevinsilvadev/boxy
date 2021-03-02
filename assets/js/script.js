@@ -1,41 +1,41 @@
 const box = document.getElementById('box');
 const copyButton = document.getElementById('copy-button');
+const controllersElements = document.getElementsByClassName('controller');
 
-const controllers = [
-  {
-    name: 'border-radius-top-left',
-    attr: 'borderTopLeftRadius',
-  },
-  {
-    name: 'border-radius-top-right',
-    attr: 'borderTopRightRadius',
-  },
-  {
-    name: 'border-radius-bottom-left',
-    attr: 'borderBottomLeftRadius',
-  },
-  {
-    name: 'border-radius-bottom-right',
-    attr: 'borderBottomRightRadius',
-  },
-];
+const controllers = [...controllersElements];
 
-controllers.map(({ name, attr }) => {
-  const input = document.getElementsByName(name)[0];
-  const button = input.parentElement.children[1];
+controllers.map((controller) => {
+  const input = controller.children[0];
+  const button = controller.children[1];
 
-  input.addEventListener('input', ({ target }) => {
-    changeBoxBorderRadius(attr, `${target.value}px`);
-  });
-
-  button.addEventListener('click', ({ target }) => {
-    changeBoxBorderRadius(attr, changeUnit(box.style[attr]));
-    target.innerText = getUnit(box.style[attr]);
-  });
+  input.addEventListener('input', handleInputChange);
+  button.addEventListener('click', (event) => handleButtonClick(event, input));
 });
 
+function handleInputChange({ target }) {
+  const attr = snakeToCamel(target.getAttribute('name'));
+
+  changeBoxBorderRadius(attr, `${target.value}px`);
+}
+
+function handleButtonClick(event, input) {
+  /*
+  TODO: try another way to pass 'input' object to this function
+  */
+
+  const attr = snakeToCamel(input.getAttribute('name'));
+
+  changeBoxBorderRadius(attr, changeUnit(box.style[attr]));
+  event.target.innerText = getUnit(box.style[attr]);
+}
+
+// utils
 function changeBoxBorderRadius(border, value) {
   box.style[border] = value;
+}
+
+function snakeToCamel(str) {
+  return str.replace(/([-_]\w)/g, (subStr) => subStr.toUpperCase()[1]);
 }
 
 function getUnit(string) {
