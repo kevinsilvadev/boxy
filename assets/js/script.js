@@ -12,6 +12,8 @@ controllers.map((controller) => {
   button.addEventListener('click', (event) => handleButtonClick(event, input));
 });
 
+copyButton.addEventListener('click', handleCopyButtonClick);
+
 function handleInputChange({ target }) {
   const attr = snakeToCamel(target.getAttribute('name'));
 
@@ -29,9 +31,32 @@ function handleButtonClick(event, input) {
   event.target.innerText = getUnit(box.style[attr]);
 }
 
+function handleCopyButtonClick() {
+  const style = `\
+  width: ${getComputedStyle(box).width};
+  height: ${getComputedStyle(box).height};
+
+  border: ${getComputedStyle(box).border}
+  border-radius: ${getComputedStyle(box).borderRadius};
+  `;
+
+  copyTextToClipboard(style);
+}
+
 // utils
 function changeBoxBorderRadius(border, value) {
   box.style[border] = value;
+}
+
+function copyTextToClipboard(text) {
+  navigator.clipboard.writeText(text).then(
+    function () {
+      console.log('Successfully copied to clipboard!');
+    },
+    function (err) {
+      console.error('Could not copy text: ', err);
+    }
+  );
 }
 
 function snakeToCamel(str) {
