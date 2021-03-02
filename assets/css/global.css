@@ -1,0 +1,182 @@
+:root {
+  --color-background: #c8c7dd;
+  --color-background-container: #0b0a25;
+
+  --color-box: RGBA(79, 72, 236, 0.6);
+  --color-box-border: RGBA(79, 72, 236, 1);
+
+  --color-input: RGBA(79, 72, 236, 0.6);
+  --color-input-border: RGBA(11, 10, 37, 0.6);
+  --color-input-options: RGBA(79, 72, 236, 0.8);
+  --color-input-options-hover: RGBA(79, 72, 236, 0.6);
+  --color-input-placeholder: #c8c7dd;
+
+  --color-text: #c8c7dd;
+
+  --color-button: RGBA(79, 72, 236, 1);
+  --color-button-hover: RGBA(79, 72, 236, 0.8);
+
+  font-size: 62.5%;
+}
+
+* {
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+input,
+button,
+textarea {
+  font-size: 1.6rem;
+  font-family: 'Gothic A1', sans-serif;
+  color: var(--color-text);
+}
+
+body {
+  padding: 4rem 20rem;
+  height: 100vh;
+
+  background-color: var(--color-background);
+}
+
+main.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  position: relative;
+  overflow: hidden;
+
+  background-color: var(--color-background-container);
+
+  height: 100%;
+  width: 100%;
+
+  border-radius: 20px;
+}
+
+main.container > section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 2rem 2rem 0 2rem;
+}
+
+#box {
+  height: 33rem;
+  width: 33rem;
+
+  background-color: var(--color-box);
+  border: 0.5rem dashed var(--color-box-border);
+  border-radius: 8rem;
+}
+
+.input-container {
+  display: flex;
+
+  border: 0.2rem solid var(--color-input-border);
+  margin-bottom: 1rem;
+}
+
+.input-container:last-child {
+  margin-bottom: 0;
+}
+
+.input-container > input {
+  border: 0;
+  border-radius: 8px 0 0 8px;
+  padding: 2rem;
+
+  height: 7.5rem;
+  width: 25rem;
+
+  color: var(--color-input-placeholder);
+  font-size: 2rem;
+
+  background-color: var(--color-input);
+}
+
+.input-container > input:focus {
+  outline: 0;
+}
+
+.option-button {
+  width: 8rem;
+  height: 7.5rem;
+
+  font-size: 2.2rem;
+  border-radius: 0 8px 8px 0;
+  background-color: var(--color-input-options);
+  transition: background-color 0.5s;
+}
+
+.option-button:hover {
+  background-color: var(--color-input-options-hover);
+}
+
+.option-button:focus {
+  outline: 0;
+}
+
+#copy-button {
+  width: 100%;
+  height: 8rem;
+
+  position: absolute;
+  bottom: 0;
+
+  font-size: 2.8rem;
+  text-transform: uppercase;
+
+  background: var(--color-button);
+  transition: background-color 0.5s;
+}
+
+#copy-button:hover {
+  background: var(--color-button-hover);
+}
+
+#copy-button:focus {
+  outline: 0;
+}
+
+@media (max-width: 1134px) {
+  body {
+    padding: 2rem 10rem;
+  }
+}
+
+@media (max-width: 940px) {
+  body {
+    padding: 2rem 2rem;
+  }
+}
+
+@media (max-width: 780px) {
+  :root {
+    font-size: 50%;
+  }
+
+  body {
+    height: auto;
+  }
+
+  main.container > section {
+    flex-direction: column;
+    margin-bottom: 12rem;
+  }
+
+  #box {
+    margin-bottom: 4rem;
+  }
+}
+
+@media (max-width: 425px) {
+  :root {
+    font-size: 40%;
+  }
+}
