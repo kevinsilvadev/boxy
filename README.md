@@ -1,5 +1,5 @@
 <div align="center">
-  <!-- <img src=".github/images/banner.png" alt="boxy" /> -->
+  <img src=".github/images/banner.png" alt="boxy" />
   <h1>
     boxy
   </h1>
